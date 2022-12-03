@@ -39,6 +39,9 @@ class ResectionService
 	@DataContext('resection_task')
 	def em_task
 
+	@DataContext('faas')
+	def em_faas 
+
 	@DataContext('faas_list')
 	def em_faas_list 
 
@@ -182,6 +185,10 @@ class ResectionService
     public void validateNewTdNo(newfaas) {
         if (!newfaas.tdno) throw new Exception('New TD No. must be specified')
         faasSvc.checkDuplicateTdNo( newfaas.objid, newfaas.tdno )
+				
+				def tdno = [tdno: newfaas.tdno, utdno: newfaas.utdno]
+				em_faas.find([objid: newfaas.objid]).update(tdno)
+				em_faas_list.find([objid: newfaas.objid]).update(tdno)
     }
 
     @ProxyMethod
