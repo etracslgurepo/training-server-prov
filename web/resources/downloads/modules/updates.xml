@@ -16,20 +16,20 @@ ws.host=${app_server_ip}:8060
 socketio.host=${app_server_ip}:7080
 </env>
 <modules>
-  <module version="1.00" file="libs/commons-net-3.5.jar"  />
+   <module version="1.00" file="libs/commons-net-3.5.jar"  />
 
-  <import file="custom/updates.pxml"/> 
+   <import file="custom/updates.pxml"/> 
 
-  <import file="core/updates.pxml"/> 
+   <import file="core/updates.pxml"/> 
 
-  <import file="shared/updates.pxml"/> 
+   <import file="shared/updates.pxml"/> 
 
-  <import file="etracs/updates.pxml"/> 
+   <import file="etracs/updates.pxml"/> 
 
-  <import file="entity/updates.pxml"/> 
+   <import file="entity/updates.pxml"/> 
 
-  <import file="treasury/updates.pxml"/> 
+   <import file="treasury/updates.pxml"/> 
 
-  <import file="queue/updates.pxml"/> 
+   <import file="queue/updates.pxml"/> 
 </modules>
 </app>
