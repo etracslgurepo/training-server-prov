@@ -1,5 +1,11 @@
-use `training_etracs_prov`
-;
+--
+-- Current Database: `training_etracs_prov`
+--
+
+USE `training_etracs_prov`;
+
+
+-- ## 2023-03-16
 
 CREATE TABLE `sys_message_queue` (
   `objid` varchar(50) NOT NULL,
