@@ -5,14 +5,14 @@ class EntityMultipleListInterceptor  {
 	@Env
 	def env;
 
-	@After(pattern="QueryService.getNodeList", eval="#{args[0]._schemaname == 'entitymultiple'}") 
+	@After(pattern="QueryService.getNodeList", eval="#{args[0]._schemaname.toString().matches('entitymultiple|vw_entitymultiple')}") 
 	public void afterGetNodes( evt ) {
 		def nodes = evt.result;
 		nodes << [state: 'ACTIVE', title: 'ACTIVE' ];
 		nodes << [state: 'INACTIVE', title: 'INACTIVE' ];		
 	}	
 
-	@Before(pattern="QueryService.getList", eval="#{args[0]._schemaname == 'entitymultiple'}") 
+	@Before(pattern="QueryService.getList", eval="#{args[0]._schemaname.toString().matches('entitymultiple|vw_entitymultiple')}") 
 	public void beforeGetList( evt ) { 
 		def o = evt.args[0]; 
 
