@@ -2,8 +2,8 @@
 	<element tablename="vw_entityindividual">
 		<field name="objid" primary="true"/>
 		<field name="entityno" caption="EntityNo"/>
-		<field name="name" caption="Name" hidden="true" visible="false"/>
-		<field name="entityname" hidden="true" visible="false" selectable="false" searchable="true"/>
+		<field name="name" caption="Name" hidden="true" />
+		<field name="entityname" hidden="true" selectable="false" searchable="true"/>
 		<field name="lastname" caption="LastName" indexed="true"/>
 		<field name="firstname" caption="FirstName" indexed="true"/>
 		<field name="middlename" caption="MiddleName" /> 

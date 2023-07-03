@@ -3,7 +3,7 @@
 		<field name="objid" primary="true"/>
 		<field name="entityno" caption="EntityNo"/>
 		<field name="entityname" hidden="true" visible="false" selectable="false" searchable="true"/>
-		<field name="name" caption="Name" hidden="true" visible="false"/>
+		<field name="name" caption="Name" hidden="true" />
 		<field name="address_objid" hidden="true" visible="false" selectable="false"/>
 		<field name="address_text" caption="Address" selectable="false"/>
 		<field name="type" caption="Type" hidden="true" visible="false" selectable="false"/>
