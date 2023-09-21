@@ -51,8 +51,13 @@ public class BusinessBillingService  {
 
 	@ProxyMethod
 	public def generateBilling( def o ) {
-		if ( !o.taxfees )
+		if ( !o.taxfees ) {
+			if ( o._silent.toString().matches('true|1')) {
+	        	return null; 
+        	}
+
 			throw new Exception("Please provide at least one taxfee");
+		}
 
 		def facts = [];
 		
@@ -464,11 +469,13 @@ public class BusinessBillingService  {
         } 
 
         def p = [ app: e ];
+        p._silent = o._silent;
         p.applicationid = e.objid;
         p.billdate = o.billdate; 
         p.taxfees = items; 
         p.show_paid = true; 
         def result = generateBilling( p ); 
+        if ( result == null ) result = [:]; 
         def billing = [ taxfees: result.taxfees ];
         def billitems = [];
         billing.taxfees.each {

@@ -14,3 +14,22 @@ where b.bin = $P{bin}
 group by a.objid, a.appno, a.appyear, a.txndate 
 having sum(r.amount - r.amtpaid) > 0 
 order by a.appyear, a.txndate
+
+
+[getLobsWithPSIC]
+select 
+	sc.code as objid, sc.code, sc.description as name, 
+	(case 
+		when sc.details is not null then sc.details 
+		else c.details 
+	end) as details, 
+	c.code as classification_code, 
+	c.description as classification_name, 
+	c.details as classification_details, 
+
+	lob.objid as lob_objid, lob.name as lob_name, 
+	lob.classification_objid as lob_classification_objid
+from lob 
+	inner join psic_subclass sc on sc.code = lob.psicid 
+	inner join psic_class c on c.code = sc.classid
+order by sc.description, lob.name 

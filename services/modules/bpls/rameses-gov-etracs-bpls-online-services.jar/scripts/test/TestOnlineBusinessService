@@ -1,0 +1,18 @@
+import com.rameses.annotations.*;
+
+class TestOnlineBusinessService {
+	
+	@Context 
+	def ctx;
+
+	@ProxyMethod 
+	public void test() {
+		def href = new StringBuilder(); 
+		href.append( ctx.conf.get('filipizen_server_scheme')); 
+		href.append('://');
+		href.append( ctx.conf.get('filipizen_server_host')); 
+		href.append('/partners/').append( 'clusterid_partnerid' ).append('/bpls/billing');
+		println 'href ==> '+ href;
+	}
+
+}

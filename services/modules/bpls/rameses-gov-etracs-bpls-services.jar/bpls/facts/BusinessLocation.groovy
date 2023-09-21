@@ -11,7 +11,7 @@ public class BusinessLocation {
 	public BusinessLocation(a) {
 		this.type = a.type;
 		if(a.type == 'local') type = 'owned';
-		if(a.barangay) {
+		if(a.barangay?.objid) {
 			barangayid = a.barangay.objid	
 		}
 	}

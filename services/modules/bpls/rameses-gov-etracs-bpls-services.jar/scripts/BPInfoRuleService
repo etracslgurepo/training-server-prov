@@ -76,6 +76,7 @@ public class BPInfoRuleService  {
 			phase++;
 		}
 		if(phase == 1) phase = 2;
+
 		return [infos:request.newinfos, phase: phase];
 	}
 	

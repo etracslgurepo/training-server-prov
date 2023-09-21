@@ -13,6 +13,9 @@ class BusinessApplicationWorkflowInterceptor {
 	@ActiveDB('online_bpls_renewal_builder')
 	def app_builder; 
 
+	@Context 
+	def ctx; 
+
 
 	@After( pattern="BusinessApplicationWorkflowService.notifyChangeAppState") 
 	public void afterNotifyChangeAppState( evt ) {
@@ -50,7 +53,12 @@ class BusinessApplicationWorkflowInterceptor {
 		data.to = app.contact.email; 
 		data.subject = 'Online Business Renewal For Payment'; 
 
-		def href = "https://filipizen.com/partner/"+ app.partnername +"/bpls/businessbilling"; 
+		def href = new StringBuilder(); 
+		href.append( ctx.conf.get('filipizen_server_scheme')); 
+		href.append('://');
+		href.append( ctx.conf.get('filipizen_server_host')); 
+		href.append('/partners/').append( app.partnername ).append('/bpls/billing');
+
 		data.message = """ 
 			Your online business renewal application <b>${app.approvedappno}</b> has been approved for payment.<br/> 
 			To make payment, go to <a href="${href}"> Filipizen.com </a>.

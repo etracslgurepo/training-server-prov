@@ -11,7 +11,7 @@ class EntityJuridicalListInterceptor  {
 	@Env
 	def env;
 
-	@After(pattern="QueryService.getNodeList", eval="#{args[0]._schemaname == 'entityjuridical' }")
+	@After(pattern="QueryService.getNodeList", eval="#{args[0]._schemaname.toString().matches('entityjuridical|vw_entityjuridical')}")
 	public def afterGetNodeList(def evt) {
 		def nodes = evt.result;
 		nodes << [state: 'ACTIVE', title: 'ACTIVE' ];
@@ -27,7 +27,7 @@ class EntityJuridicalListInterceptor  {
 		}
 	}	
 
-	@Before(pattern="QueryService.getList", eval="#{ args[0]._schemaname == 'entityjuridical' }")
+	@Before(pattern="QueryService.getList", eval="#{ args[0]._schemaname.toString().matches('entityjuridical|vw_entityjuridical')}")
 	public void beforeGetList( evt ) {
 		def o = evt.args[0];
 

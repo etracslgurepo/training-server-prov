@@ -293,6 +293,11 @@ class OnlineBusinessRenewalService {
   		newapp.apptype = 'RENEW'; 
   		newapp.state = 'PENDING'; 
 
+  		newapp.tradename = business.tradename;
+  		newapp.businessname = business.businessname;
+  		newapp.address = business.address;
+  		newapp.owner = business.owner;
+
   		newapp.createdby = (param.user ? param.user : [:]); 
   		if ( !newapp.createdby?.objid ) newapp.createdby.objid = 'filipizen'; 
   		if ( !newapp.createdby?.name ) newapp.createdby.name = 'filipizen'; 
@@ -303,6 +308,7 @@ class OnlineBusinessRenewalService {
 		newapp.contact = param.contact; 
 		newapp.partnername = [ param.partner.group.name, param.partner.name ].join('_'); 
 		newapp.controlno = KeyGen.generateAlphanumKey( 'B-'+ param.orgcode +'-', 12 ); 
+		newapp.datainfo = [:];
 		online_app.create( newapp ); 
 
 		updateRequirements( newapp.objid, newapp.lobs ); 
@@ -477,6 +483,8 @@ class OnlineBusinessRenewalService {
 		def em_download = dynaEm.lookup('online_business_application_doc_fordownload'); 
 
 		def rundate = dateSvc.getServerDate(); 
+
+		app.dtsubmitted = rundate; 
 
 		app.requirements.eachWithIndex{ o, idx-> 
 			def path = (o.attachment?.location ? o.attachment.location : o.attachment?.path);

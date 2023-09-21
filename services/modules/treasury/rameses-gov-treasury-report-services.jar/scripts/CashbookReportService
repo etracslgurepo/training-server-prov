@@ -206,7 +206,7 @@ class CashbookReportService {
 			data.info.TOPERIOD = MDY.format( dateSvc.add( params.todate, '-1d' ));  
 			data.info.PERIODCOVERED = ''+ data.info.FROMPERIOD +' to '+ data.info.TOPERIOD; 
 		} 
-		return [reportdata: data, info: data.info]; 
+		return [reportdata: data.items, info: data.info]; 
 	}
 
 	void buildDateFilter( params ) { 

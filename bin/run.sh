@@ -16,7 +16,7 @@ else
    JAVA_OPTS_MEM="$JAVA_MEM"
 fi
 
-JAVA_OPTS="$JAVA_OPTS_MEM -Dosiris.run.dir=$RUN_DIR -Dosiris.base.dir=$BASE_DIR -Duser.language=en"
+JAVA_OPTS="$JAVA_OPTS_MEM -Dosiris.run.dir=$RUN_DIR -Dosiris.base.dir=$BASE_DIR -Dosiris.repo.dir=$BASE_DIR -Duser.language=en"
 
 # run java
 if [ "x$JAVA_HOME" = "x" ]; then
@@ -38,4 +38,4 @@ echo "================================================================="
 echo ""
 
 rm -f bin/.osiris_pid
-$JAVA $JAVA_OPTS -cp lib/*:. com.rameses.main.bootloader.MainBootLoader
+$JAVA $JAVA_OPTS -cp lib/*:lib/ext/s3/*:. com.rameses.main.bootloader.MainBootLoader

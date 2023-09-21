@@ -139,8 +139,13 @@ public class BusinessPostPaymentService  {
 
 		def appstate = app.state.toString().toUpperCase();
 		if ( appstate == 'COMPLETED' ) {
-			if ( app.permit ) {
-				throw new Exception("You must first cancel the active permit for this application");
+			if ( app.permit?.objid ) { 
+				def YMD = new java.text.SimpleDateFormat('yyyyMMdd');
+				def permitIssueDate = YMD.format( app.permit.dtissued ).toInteger(); 
+				def paymentRefDate  = YMD.format( pmt.refdate ).toInteger(); 
+				if ( paymentRefDate <= permitIssueDate ) {
+					throw new Exception("You must first cancel the active permit for this application");	
+				}
 			}
 		}
 
