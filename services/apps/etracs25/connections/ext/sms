@@ -1,5 +1,5 @@
 provider=script
-app.host=${gdx_server_ip}:8500
+app.host=${sms_server_host}
 app.cluster=cloud-server
 app.context=sms
 readTimeout=60000
