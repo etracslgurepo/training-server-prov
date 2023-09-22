@@ -1,0 +1,7 @@
+#----------------------------------------
+# CLOUD GDX
+#----------------------------------------
+provider=node-script
+host=${filipizen_server_ip}:3000
+channel=${channel}
+timeout=60000
