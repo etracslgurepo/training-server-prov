@@ -1,6 +1,6 @@
 <app>
 <env>
-app.title=ETRACS 2.5 TRAINING build 2.5.05.03 (${lgu_name})
+app.title=ETRACS 2.5 TRAINING build 2.5.05.03-12 (${lgu_name})
 app.host=${app_server_ip}:18070
 app.cluster=osiris3
 app.context=etracs25
@@ -13,7 +13,7 @@ filemgmt.enabled=false
 ws.host=${app_server_ip}:18060
 #res.host=${app_server_ip}
 
-socketio.host=${app_server_ip}:17080
+socketio.host=${app_server_ip}:7080
 </env>
 <modules>
    <module version="1.00" file="libs/commons-net-3.5.jar"  />

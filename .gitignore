@@ -9,6 +9,7 @@ _tmp
 /_tools
 /fileserver
 /custom-template
+/output
 /report-files
 /bin/env.conf
 /lib/mysql.jar
