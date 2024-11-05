@@ -17,22 +17,24 @@ running the ETRACS application.
 
 3. Restore the "etracs" database 
 
-   mysql -u root -p -f  <  01-training_etracs.sql
+   mysql -u root -p -f  <  01-training_etracs-schema.sql
+
+   mysql -u root -p -f  <  02-training_etracs-data.sql
 
 
 4. Restore the "notification" database 
 
-   mysql -u root -p -f  <  02-training_notification.sql
+   mysql -u root -p -f  <  03-training_notification.sql
 
 
 5. Restore the "image" database 
 
-   mysql -u root -p -f  <  03-training_image.sql
+   mysql -u root -p -f  <  04-training_image.sql
 
 
 6. Restore the "queue" database 
 
-   mysql -u root -p -f  <  04-training_queue.sql
+   mysql -u root -p -f  <  05-training_queue.sql
 
 
 DONE !!!

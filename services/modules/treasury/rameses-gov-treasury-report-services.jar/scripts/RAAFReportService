@@ -42,7 +42,7 @@ class RAAFReportService {
 		items.removeAll( delitems ); 
 		delitems.clear(); 
 
-		if ( !items ) throw new Exception('No record(s) found                  ');
+		// if ( !items ) throw new Exception('No record(s) found                  ');
 
 		items.eachWithIndex{ o,idx-> o.lineno = idx; } 
 
@@ -66,7 +66,9 @@ class RAAFReportService {
 	 		buildRAAFNonSerial( items, nonserials );		
 		}
 
-		if ( items.isEmpty()) throw new Exception('No record(s) found');
+		if ( items.isEmpty()) {
+			items << [:]; 
+		}
 
 		items.sort{ it.lineno } 	
 		items.each{
